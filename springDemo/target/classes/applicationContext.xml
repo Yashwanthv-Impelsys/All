@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+  
+ <bean id="empBean" class="model.Employee" scope="singleton">
+  <constructor-arg type="String" value="Yashwanth" /><!-- Constructor injection -->
+  <constructor-arg type="device" ref="laptopDevice" />
+  <property name="empId" value="abc" />
+  <!--  <property name="device" ref="laptopDevice"/>--> <!-- dependency injection -->
+ </bean>
+ 
+ <bean id="empBean1" class="model.Employee" autowire="byName">
+  <property name="name" value="Yash" />
+  <property name="empId" value="2" />
+ </bean>
+ 
+ <bean id="laptopDevice" class="model.Device" scope="prototype">
+  <property name="type" value="laptop" />
+  <property name="modelNum" value="LT345" />
+ </bean>
+ 
+ <bean id="desktopDevice" class="model.Device" >
+  <property name="type" value="Desktop" />
+  <property name="modelNum" value="Desktop-345" />
+ </bean>
+ 
+</beans>
